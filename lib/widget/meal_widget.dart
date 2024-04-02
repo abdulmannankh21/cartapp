@@ -78,14 +78,14 @@ class _MealWidgetState extends State<MealWidget> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Image.asset(
-                  'images/save.png',
-                  scale: 22,
-                  color: secondaryUi,
-                )
+                // const SizedBox(
+                //   width: 10,
+                // ),
+                // Image.asset(
+                //   'images/save.png',
+                //   scale: 22,
+                //   color: secondaryUi,
+                // )
               ],
             ),
 
