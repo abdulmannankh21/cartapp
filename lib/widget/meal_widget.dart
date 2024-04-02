@@ -108,7 +108,7 @@ class _MealWidgetState extends State<MealWidget> {
           )),
         ),
       ),
-      children: [
+      children:widget.meal.products.isEmpty ? [] : [
         Stack(
           children: [
             Padding(
