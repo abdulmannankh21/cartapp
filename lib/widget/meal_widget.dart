@@ -21,18 +21,15 @@ class _MealWidgetState extends State<MealWidget> {
   Widget build(BuildContext context) {
     return ExpansionTile(
       shape: Border.all(color: Colors.transparent),
-      leading: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        child: Container(
-          height: 70,
-          width: 70,
-          decoration: BoxDecoration(
-              color: primary, borderRadius: BorderRadius.circular(23)),
-          child: Center(
-            child: Image.asset(
-              widget.meal.icon,
-              height: 25,
-            ),
+      leading: Container(
+        height: 70,
+        width: 70,
+        decoration: BoxDecoration(
+            color: primary, borderRadius: BorderRadius.circular(23)),
+        child: Center(
+          child: Image.asset(
+            widget.meal.icon,
+            height: 25,
           ),
         ),
       ),
@@ -69,12 +66,14 @@ class _MealWidgetState extends State<MealWidget> {
                     width: 80,
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        border: Border.all(color: secondaryUi),
+                        border: Border.all(
+                            color: isEdit ? Colors.green : secondaryUi),
                         borderRadius: BorderRadius.circular(20)),
                     child: Center(
                       child: Text(
                         isEdit ? 'Save' : 'Edit',
-                        style: TextStyle(color: secondary),
+                        style:
+                            TextStyle(color: isEdit ? Colors.green : secondary),
                       ),
                     ),
                   ),
@@ -89,8 +88,9 @@ class _MealWidgetState extends State<MealWidget> {
                 )
               ],
             ),
+
       trailing: Transform.translate(
-        offset: const Offset(0, -3),
+        offset: const Offset(28, -8),
         child: Container(
           height: 70,
           width: 50,
@@ -109,16 +109,54 @@ class _MealWidgetState extends State<MealWidget> {
         ),
       ),
       children: [
-        ...widget.meal.products.asMap().entries.map((entry) {
-          int index = entry.key;
-          Product product = entry.value;
-          return ProductWidget(
-            product: product,
-            mealIndex: Get.find<MealController>().meals.indexOf(widget.meal),
-            productIndex: index,
-            isEdit: isEdit,
-          );
-        }).toList(),
+        Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.25,
+                alignment: Alignment.topCenter,
+                decoration: BoxDecoration(
+                    color: primary, borderRadius: BorderRadius.circular(17)),
+              ),
+            ),
+            Expanded(
+                child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  ...widget.meal.products.asMap().entries.map((entry) {
+                    int index = entry.key;
+                    Product product = entry.value;
+                    return ProductWidget(
+                      product: product,
+                      mealIndex:
+                          Get.find<MealController>().meals.indexOf(widget.meal),
+                      productIndex: index,
+                      isEdit: isEdit,
+                    );
+                  }).toList(),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Total",
+                          style: TextStyle(color: Colors.green, fontSize: 17),
+                        ),
+                        Text(
+                          "${widget.meal.total} Cals",
+                          style: TextStyle(color: Colors.green, fontSize: 17),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )),
+          ],
+        ),
       ],
     );
   }

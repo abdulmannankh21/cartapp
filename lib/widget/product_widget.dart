@@ -21,48 +21,50 @@ class ProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Row(
+      child: Column(
         children: [
-          const SizedBox(
-            width: 10,
-          ),
-          Text(
-            product.name,
-            style: TextStyle(color: secondaryUi, fontSize: 15),
-          ),
-          const Spacer(),
-          Text('${product.calories} Cals',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 17,
-              )),
-          const SizedBox(
-            width: 10,
-          ),
-          CircleAvatar(
-            radius: 15,
-            backgroundColor:
-                isEdit ? Colors.red : const Color.fromARGB(255, 110, 108, 106),
-            child: isEdit
-                ? InkWell(
-                    onTap: () {
-                      Get.find<MealController>()
-                          .deleteProduct(mealIndex, productIndex);
-                    },
-                    child: Icon(
-                      Icons.close,
-                      color: Colors.white,
-                      size: 18,
-                    ),
-                  )
-                : Image.asset(
-                    'images/right.png',
-                    color: Colors.white,
-                    height: 13,
-                  ),
-          ),
-          const SizedBox(
-            width: 10,
+          Row(
+            children: [
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                product.name,
+                style: TextStyle(color: secondaryUi, fontSize: 17),
+              ),
+              const Spacer(),
+              Text('${product.calories} Cals',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17,
+                  )),
+              const SizedBox(
+                width: 10,
+              ),
+              CircleAvatar(
+                radius: 12,
+                backgroundColor:
+                    isEdit ? Colors.red : const Color.fromARGB(255, 110, 108, 106),
+                child: isEdit
+                    ? InkWell(
+                        onTap: () {
+                          Get.find<MealController>()
+                              .deleteProduct(mealIndex, productIndex);
+                        },
+                        child: Icon(
+                          Icons.close,
+                          color: Colors.white,
+                          size: 12,
+                        ),
+                      )
+                    : Image.asset(
+                        'images/right.png',
+                        color: Colors.white,
+                        height: 10,
+                      ),
+              ),
+
+            ],
           ),
           const Divider(
             color: primaryUI,

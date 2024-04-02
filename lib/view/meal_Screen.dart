@@ -42,19 +42,16 @@ class MealScreen extends StatelessWidget {
                     child: ListView.builder(
                       itemCount: mealController.meals.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                            width: double.infinity,
-                            // color: primaryUI,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                  alignment: Alignment.topCenter,
-                                  decoration: BoxDecoration(
-                                      color: primaryUI,
-                                      borderRadius: BorderRadius.circular(17)),
-                                  child: MealWidget(
-                                      meal: mealController.meals[index])),
-                            ));
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                              alignment: Alignment.topCenter,
+                              decoration: BoxDecoration(
+                                  color: primaryUI,
+                                  borderRadius: BorderRadius.circular(17)),
+                              child: MealWidget(
+                                  meal: mealController.meals[index])),
+                        );
                       },
                     ),
                   );
@@ -62,6 +59,7 @@ class MealScreen extends StatelessWidget {
 
 
             ),
+
           ],
         ),
       ),

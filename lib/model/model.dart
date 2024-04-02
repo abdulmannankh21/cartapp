@@ -1,10 +1,11 @@
 class Meal {
   String name;
-  final String icon;
+   String icon;
+   int? total;
 
   List<Product> products;
 
-  Meal(this.name, this.products, this.icon);
+  Meal(this.name, this.products, this.icon,this.total);
 }
 
 class Product {
