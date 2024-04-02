@@ -33,12 +33,9 @@ class MealController extends GetxController {
   ];
 
   void deleteProduct(int mealIndex, int productIndex) {
-    // meals[mealIndex].products.removeAt(productIndex);
     int removedCalories = meals[mealIndex].products[productIndex].calories;
     meals[mealIndex].products.removeAt(productIndex);
-
-    // Subtract the calories of the removed product from the total calories of the meal
-    meals[mealIndex].total = (meals[mealIndex].total! - removedCalories)!;
+    meals[mealIndex].total = (meals[mealIndex].total! - removedCalories);
     update();
   }
 
