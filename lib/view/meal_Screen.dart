@@ -4,8 +4,10 @@ import '../controller/meal_controller.dart';
 import '../theme.dart';
 import '../widget/meal_widget.dart';
 
-class MealScreen extends StatelessWidget {
+class mealScreen extends StatelessWidget {
   final MealController mealController = Get.put(MealController());
+
+   mealScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +29,17 @@ class MealScreen extends StatelessWidget {
                     'Meals',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  Icon(
-                    Icons.more_horiz,
-                    size: 40,
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.favorite_border_rounded,
+                        size: 25,
+                      ),
+                      Icon(
+                        Icons.more_horiz,
+                        size: 40,
+                      )
+                    ],
                   )
                 ],
               ),

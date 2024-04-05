@@ -10,7 +10,7 @@ class ProductWidget extends StatelessWidget {
   final int productIndex;
   final bool isEdit;
 
-  ProductWidget({
+  const ProductWidget({super.key,
     required this.product,
     required this.mealIndex,
     required this.productIndex,
@@ -30,11 +30,11 @@ class ProductWidget extends StatelessWidget {
               ),
               Text(
                 product.name,
-                style: TextStyle(color: secondaryUi, fontSize: 17),
+                style: const TextStyle(color: secondaryUi, fontSize: 17),
               ),
               const Spacer(),
               Text('${product.calories} Cals',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 17,
                   )),
@@ -42,7 +42,7 @@ class ProductWidget extends StatelessWidget {
                 width: 10,
               ),
               CircleAvatar(
-                radius: 12,
+                radius: 10,
                 backgroundColor:
                     isEdit ? Colors.red : const Color.fromARGB(255, 110, 108, 106),
                 child: isEdit
@@ -51,16 +51,16 @@ class ProductWidget extends StatelessWidget {
                           Get.find<MealController>()
                               .deleteProduct(mealIndex, productIndex);
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.close,
                           color: Colors.white,
-                          size: 12,
+                          size: 10,
                         ),
                       )
                     : Image.asset(
                         'images/right.png',
                         color: Colors.white,
-                        height: 10,
+                        height: 8,
                       ),
               ),
 
